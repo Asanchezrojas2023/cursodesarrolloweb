@@ -22,9 +22,9 @@
     $resultado = mysqli_query($db, $consulta);
     $propiedad = mysqli_fetch_assoc($resultado);
     
-    echo "<pre>";
+    /**echo "<pre>";
     var_dump($propiedad);
-    echo "</pre>";
+    echo "</pre>";**/
 
     // consultar para obtener los vendedores
 
@@ -34,13 +34,14 @@
     // arreglo con mensaje de errores
     $errores = [];
 
-    $titulo = '';
-    $precio = '';
-    $descripcion = '';
-    $habitaciones = '';
-    $wc = '';
-    $estacionamiento = '';
-    $vendedores_Id = '';
+    $titulo = $propiedad['titulo'];
+    $precio =  $propiedad['precio'];
+    $descripcion =  $propiedad['descripcion'];
+    $habitaciones =  $propiedad['habitaciones'];
+    $wc =  $propiedad['wc'];
+    $estacionamiento =  $propiedad['estacionamiento'];
+    $vendedores_Id =  $propiedad['vendedores_Id'];
+    $imagenPropiedad = $propiedad['imagen'];
 
 
     // Ejecutar el codigo despues de que el usuario envia el formulario
@@ -186,6 +187,8 @@
 
                 <label for="imagen">Imagen</label>
                 <input type="file" id="imagen"  accept="image/jpeg, image/png" name ="imagen">
+
+                <img src="/imagenes/<?php echo $imagenPropiedad; ?>"  class="imagen-small">
 
                 <label for="descripcion">Descripcion</label>
                 <textarea id="descripcion" name="descripcion"><?php echo $descripcion;?> </textarea>
